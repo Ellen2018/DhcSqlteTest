@@ -8,6 +8,7 @@ import com.ellen.dhcsqlitelibrary.table.annotation.SqlType;
 import com.ellen.sqlitecreate.createsql.helper.SQLFieldTypeEnum;
 
 import java.util.Map;
+import java.util.Set;
 
 public class Student {
 
@@ -31,7 +32,7 @@ public class Student {
      * 科目以及成绩
      */
     @DataStructure //声明它是属于数据结构的属性
-    private Map<Subject,Integer> subjectMap;
+    private Map<String,Integer> subjectMap;
 
     /**
      * 总分
@@ -72,11 +73,16 @@ public class Student {
         this.age = age;
     }
 
-    public Map<Subject, Integer> getSubjectMap() {
+    public Map<String, Integer> getSubjectMap() {
         return subjectMap;
     }
 
-    public void setSubjectMap(Map<Subject, Integer> subjectMap) {
+    public void setSubjectMap(Map<String, Integer> subjectMap) {
+        this.allGrade = 0;
+        Set<String> subjectSet = subjectMap.keySet();
+        for(String subject:subjectSet){
+            this.setAllGrade(this.getAllGrade() + subjectMap.get(subject));
+        }
         this.subjectMap = subjectMap;
     }
 
@@ -94,5 +100,19 @@ public class Student {
 
     public void setFather(Father father) {
         this.father = father;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "sid=" + sid +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", subjectMap=" + subjectMap +
+                ", allGrade=" + allGrade +
+                ", isMan=" + isMan +
+                ", father=" + father +
+                '}';
     }
 }

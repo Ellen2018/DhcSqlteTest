@@ -2,12 +2,9 @@ package com.ellen.dhcsqltetest.sql;
 
 import android.database.sqlite.SQLiteDatabase;
 
-import com.ellen.dhcsqlitelibrary.table.json.JsonLibraryType;
 import com.ellen.dhcsqlitelibrary.table.operate.AutoDesignOperate;
-import com.ellen.dhcsqlitelibrary.table.reflection.ZxyLibrary;
 import com.ellen.dhcsqlitelibrary.table.reflection.ZxyTable;
 import com.ellen.dhcsqltetest.bean.Student;
-import com.ellen.dhcsqltetest.bean.Subject;
 import com.ellen.sqlitecreate.createsql.helper.SQLFieldType;
 import com.ellen.sqlitecreate.createsql.helper.SQLFieldTypeEnum;
 import com.google.gson.Gson;
@@ -15,8 +12,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class StudentTable extends ZxyTable<Student,StudentOperate> {
 
@@ -59,8 +54,8 @@ public class StudentTable extends ZxyTable<Student,StudentOperate> {
     @Override
     protected Object resumeDataStructure(String classFieldName, String json) {
         if(classFieldName.equals("subjectMap")){
-            Type type = new TypeToken<HashMap<Subject,Integer>>() {}.getType();
-            Map<Subject,Integer> subjectMap = new Gson().fromJson(json, type);
+            Type type = new TypeToken<HashMap<String,Integer>>() {}.getType();
+            HashMap<String,Integer> subjectMap = new Gson().fromJson(json, type);
             return subjectMap;
         }
         return super.resumeDataStructure(classFieldName, json);

@@ -11,6 +11,9 @@ import com.ellen.dhcsqltetest.bean.Student;
 
 import java.util.List;
 
+/**
+ * 元操作接口，注重于Sql语句的构成，而无需写方法的具体实现
+ */
 public interface StudentOperate extends AutoDesignOperate {
 
     /**
@@ -35,7 +38,7 @@ public interface StudentOperate extends AutoDesignOperate {
      * @param str
      * @return
      */
-    @Search(whereSql = "name like '@str'", orderSql = "id ASC")
+    @Search(whereSql = "name like '%@str%'", orderSql = "sid ASC")
     List<Student> searchByLikeName(@Value("str") String str);
 
 }
