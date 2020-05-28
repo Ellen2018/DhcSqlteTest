@@ -13,12 +13,12 @@ import java.util.HashMap;
 
 public class StudentTable extends ZxyTable<Student,StudentOperate> {
 
-    public StudentTable(SQLiteDatabase db, Class<Student> dataClass, Class<StudentOperate> autoClass, String tableName) {
-        super(db, dataClass, autoClass, tableName);
+    public StudentTable(SQLiteDatabase db, String tableName) {
+        super(db, tableName);
     }
 
-    public StudentTable(SQLiteDatabase db, Class<Student> dataClass, Class<StudentOperate> autoClass) {
-        super(db, dataClass, autoClass);
+    public StudentTable(SQLiteDatabase db) {
+        super(db);
     }
 
     @Override

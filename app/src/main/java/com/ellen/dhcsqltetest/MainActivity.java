@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         //创建数据库，名字为app_library,版本为1
         AppLibrary appLibrary = new AppLibrary(this,"app_library",1);
 
-        StudentTable studentTable = new StudentTable(appLibrary.getWriteDataBase(), Student.class, StudentOperate.class);
+        StudentTable studentTable = new StudentTable(appLibrary.getWriteDataBase());
 
         //创建表
         studentTable.onCreateTableIfNotExits(new OnCreateTableCallback() {
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         List<Student> studentList = new ArrayList<>();
         for(int i=0;i<10;i++){
             student = new Student();
+            student.setMan(true);
             student.setName("Name_"+i);
             student.setAge(i);
             student.setSubjectMap(getMapSubject());

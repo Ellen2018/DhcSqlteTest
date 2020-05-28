@@ -42,7 +42,7 @@ public class Student {
     /**
      * 是否为男生
      */
-    private Boolean isMan;
+    private boolean isMan;
 
     @SqlType(sqlFiledType = SQLFieldTypeEnum.TEXT)//映射为TEXT类型，不限制长度
     @Operate(operate = OperateEnum.JSON)//映射成Json
@@ -67,6 +67,14 @@ public class Student {
 
     public int getAge() {
         return age;
+    }
+
+    public boolean isMan() {
+        return isMan;
+    }
+
+    public void setMan(boolean man) {
+        isMan = man;
     }
 
     public void setAge(int age) {
