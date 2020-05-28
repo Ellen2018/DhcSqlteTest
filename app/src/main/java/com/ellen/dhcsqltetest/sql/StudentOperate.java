@@ -1,12 +1,10 @@
 package com.ellen.dhcsqltetest.sql;
 
-import com.ellen.dhcsqlitelibrary.table.operate.AutoDesignOperate;
-import com.ellen.dhcsqlitelibrary.table.operate.Delete;
-import com.ellen.dhcsqlitelibrary.table.operate.Search;
-import com.ellen.dhcsqlitelibrary.table.operate.SearchByMajorKey;
-import com.ellen.dhcsqlitelibrary.table.operate.TotalSql;
-import com.ellen.dhcsqlitelibrary.table.operate.Update;
-import com.ellen.dhcsqlitelibrary.table.operate.Value;
+import com.ellen.dhcsqlitelibrary.table.annotation.auto.Delete;
+import com.ellen.dhcsqlitelibrary.table.annotation.auto.Search;
+import com.ellen.dhcsqlitelibrary.table.annotation.auto.Update;
+import com.ellen.dhcsqlitelibrary.table.annotation.auto.Value;
+import com.ellen.dhcsqlitelibrary.table.proxy.AutoDesignOperate;
 import com.ellen.dhcsqltetest.bean.Student;
 
 import java.util.List;

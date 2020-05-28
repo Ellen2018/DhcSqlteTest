@@ -1,10 +1,9 @@
 package com.ellen.dhcsqltetest.bean;
-
-import com.ellen.dhcsqlitelibrary.table.annotation.DataStructure;
-import com.ellen.dhcsqlitelibrary.table.annotation.MajorKey;
-import com.ellen.dhcsqlitelibrary.table.annotation.Operate;
-import com.ellen.dhcsqlitelibrary.table.annotation.OperateEnum;
-import com.ellen.dhcsqlitelibrary.table.annotation.SqlType;
+import com.ellen.dhcsqlitelibrary.table.annotation.field.Operate;
+import com.ellen.dhcsqlitelibrary.table.annotation.field.OperateEnum;
+import com.ellen.dhcsqlitelibrary.table.annotation.field.SqlType;
+import com.ellen.dhcsqlitelibrary.table.annotation.field.bound.EndAutoString;
+import com.ellen.dhcsqlitelibrary.table.annotation.field.bound.MajorKey;
 import com.ellen.sqlitecreate.createsql.helper.SQLFieldTypeEnum;
 
 import java.util.Map;
@@ -26,12 +25,13 @@ public class Student {
     /**
      * 年龄
      */
+    @EndAutoString("CHECK(age != 5)")
     private int age;
 
     /**
      * 科目以及成绩
      */
-    @DataStructure //声明它是属于数据结构的属性
+    //声明它是属于数据结构的属性
     private Map<String,Integer> subjectMap;
 
     /**
@@ -42,7 +42,7 @@ public class Student {
     /**
      * 是否为男生
      */
-    private boolean isMan;
+    private Boolean isMan;
 
     @SqlType(sqlFiledType = SQLFieldTypeEnum.TEXT)//映射为TEXT类型，不限制长度
     @Operate(operate = OperateEnum.JSON)//映射成Json

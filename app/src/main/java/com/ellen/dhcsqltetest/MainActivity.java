@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.ellen.dhcsqlitelibrary.table.operate.create.OnCreateTableCallback;
 import com.ellen.dhcsqltetest.bean.Father;
 import com.ellen.dhcsqltetest.bean.Student;
 import com.ellen.dhcsqltetest.sql.AppLibrary;
 import com.ellen.dhcsqltetest.sql.StudentOperate;
 import com.ellen.dhcsqltetest.sql.StudentTable;
+import com.ellen.sqlitecreate.createsql.create.createtable.SQLField;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +31,18 @@ public class MainActivity extends AppCompatActivity {
         StudentTable studentTable = new StudentTable(appLibrary.getWriteDataBase(), Student.class, StudentOperate.class);
 
         //创建表
-        studentTable.onCreateTableIfNotExits();
+        studentTable.onCreateTableIfNotExits(new OnCreateTableCallback() {
+
+            @Override
+            public void onCreateTableFailure(String errMessage, String tableName, String createSQL) {
+
+            }
+
+            @Override
+            public void onCreateTableSuccess(String tableName, String createSQL) {
+                Log.e("Ellen2018","sql语句:"+createSQL);
+            }
+        });
 
         //清空数据
         studentTable.clear();
@@ -56,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
             student.setAge(i);
             student.setSubjectMap(getMapSubject());
             student.setFather(new Father("Father_Name_"+i,"phone_number_"+i));
-            studentList.add(student);
+            if(student.getAge() != 5) {
+                studentList.add(student);
+            }
         }
         studentTable.saveData(studentList);
 

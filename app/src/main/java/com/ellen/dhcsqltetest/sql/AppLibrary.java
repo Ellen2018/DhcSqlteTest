@@ -3,7 +3,7 @@ package com.ellen.dhcsqltetest.sql;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.ellen.dhcsqlitelibrary.table.reflection.ZxyLibrary;
+import com.ellen.dhcsqlitelibrary.table.impl.ZxyLibrary;
 
 public class AppLibrary extends ZxyLibrary {
 

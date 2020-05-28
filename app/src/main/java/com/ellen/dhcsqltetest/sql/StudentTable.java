@@ -2,11 +2,9 @@ package com.ellen.dhcsqltetest.sql;
 
 import android.database.sqlite.SQLiteDatabase;
 
-import com.ellen.dhcsqlitelibrary.table.operate.AutoDesignOperate;
-import com.ellen.dhcsqlitelibrary.table.reflection.ZxyTable;
+import com.ellen.dhcsqlitelibrary.table.impl.ZxyTable;
+import com.ellen.dhcsqlitelibrary.table.proxy.AutoDesignOperate;
 import com.ellen.dhcsqltetest.bean.Student;
-import com.ellen.sqlitecreate.createsql.helper.SQLFieldType;
-import com.ellen.sqlitecreate.createsql.helper.SQLFieldTypeEnum;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -15,21 +13,12 @@ import java.util.HashMap;
 
 public class StudentTable extends ZxyTable<Student,StudentOperate> {
 
-    public StudentTable(SQLiteDatabase db, Class<? extends Student> dataClass, Class<? extends AutoDesignOperate> autoClass) {
+    public StudentTable(SQLiteDatabase db, Class<Student> dataClass, Class<StudentOperate> autoClass, String tableName) {
+        super(db, dataClass, autoClass, tableName);
+    }
+
+    public StudentTable(SQLiteDatabase db, Class<Student> dataClass, Class<StudentOperate> autoClass) {
         super(db, dataClass, autoClass);
-    }
-
-    public StudentTable(SQLiteDatabase db, Class<? extends Student> dataClass, String autoTableName, Class<? extends AutoDesignOperate> autoClass) {
-        super(db, dataClass, autoTableName, autoClass);
-    }
-
-    @Override
-    protected SQLFieldType getSqlFieldType(String classFieldName, Class typeClass) {
-        if(classFieldName.equals("isMan")){
-            return new SQLFieldType(SQLFieldTypeEnum.TEXT,1);
-        }else {
-            return super.getSqlFieldType(classFieldName, typeClass);
-        }
     }
 
     @Override
@@ -45,19 +34,14 @@ public class StudentTable extends ZxyTable<Student,StudentOperate> {
         }
     }
 
-    /**
-     * 恢复数据结构数据
-     * @param classFieldName
-     * @param json
-     * @return
-     */
     @Override
-    protected Object resumeDataStructure(String classFieldName, String json) {
+    protected Object resumeDataStructure(String classFieldName, Class fieldClass, String json) {
         if(classFieldName.equals("subjectMap")){
             Type type = new TypeToken<HashMap<String,Integer>>() {}.getType();
             HashMap<String,Integer> subjectMap = new Gson().fromJson(json, type);
             return subjectMap;
         }
-        return super.resumeDataStructure(classFieldName, json);
+        return super.resumeDataStructure(classFieldName, fieldClass, json);
     }
+
 }
