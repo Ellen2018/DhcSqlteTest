@@ -12,6 +12,7 @@ import com.ellen.dhcsqltetest.sql.AppLibrary;
 import com.ellen.dhcsqltetest.sql.StudentOperate;
 import com.ellen.dhcsqltetest.sql.StudentTable;
 import com.ellen.sqlitecreate.createsql.create.createtable.SQLField;
+import com.ellen.sqlitecreate.createsql.helper.SQLFieldTypeEnum;
 
 import java.util.ArrayList;
 import java.util.HashMap;
