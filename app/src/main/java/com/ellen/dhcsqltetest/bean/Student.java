@@ -1,4 +1,5 @@
 package com.ellen.dhcsqltetest.bean;
+import com.ellen.dhcsqlitelibrary.table.annotation.field.DhcSqlFieldName;
 import com.ellen.dhcsqlitelibrary.table.annotation.field.Operate;
 import com.ellen.dhcsqlitelibrary.table.annotation.field.OperateEnum;
 import com.ellen.dhcsqlitelibrary.table.annotation.field.SqlType;
@@ -15,6 +16,7 @@ public class Student {
      * 学号
      */
     @MajorKey(isAutoIncrement = true)
+    @DhcSqlFieldName(sqlFieldName = "id")
     private int sid;
 
     /**

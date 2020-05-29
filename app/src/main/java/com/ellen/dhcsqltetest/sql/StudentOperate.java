@@ -18,7 +18,7 @@ public interface StudentOperate extends AutoDesignOperate {
      * 通过sid删除指定数据
      * @param sid
      */
-    @Delete("sid = @sid")
+    @Delete("id = @sid")
     void deleteBySid(@Value("sid") int sid);
 
     /**
@@ -27,7 +27,7 @@ public interface StudentOperate extends AutoDesignOperate {
      * @param sid
      * @param newName
      */
-    @Update(valueSql = "name = '@newName'", whereSql = "sid = @sid")
+    @Update(valueSql = "name = '@newName'", whereSql = "id = @sid")
     void updateStudentNameById(@Value("sid") int sid, @Value("newName") String newName);
 
     /**
@@ -36,7 +36,7 @@ public interface StudentOperate extends AutoDesignOperate {
      * @param str
      * @return
      */
-    @Search(whereSql = "name like '%@str%'", orderSql = "sid ASC")
+    @Search(whereSql = "name like '%@str%'", orderSql = "id ASC")
     List<Student> searchByLikeName(@Value("str") String str);
 
 }
