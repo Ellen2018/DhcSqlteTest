@@ -39,5 +39,5 @@ public interface StudentOperate extends AutoDesignOperate {
      */
     @Search(whereSql = "name like '%@str%'", orderSql = "id ASC")
     List<Student> searchByLikeName(@Value("str") String str);
-    
+
 }
