@@ -3,13 +3,8 @@ package com.ellen.dhcsqltetest.sql;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.ellen.dhcsqlitelibrary.table.impl.ZxyTable;
-import com.ellen.dhcsqlitelibrary.table.proxy.AutoDesignOperate;
 import com.ellen.dhcsqltetest.bean.Student;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
-import java.util.HashMap;
 
 public class StudentTable extends ZxyTable<Student,StudentOperate> {
 
@@ -33,15 +28,4 @@ public class StudentTable extends ZxyTable<Student,StudentOperate> {
             return super.setBooleanValue(classFieldName, value);
         }
     }
-
-    @Override
-    protected Object resumeDataStructure(String classFieldName, Class fieldClass, String json) {
-        if(classFieldName.equals("subjectMap")){
-            Type type = new TypeToken<HashMap<String,Integer>>() {}.getType();
-            HashMap<String,Integer> subjectMap = new Gson().fromJson(json, type);
-            return subjectMap;
-        }
-        return super.resumeDataStructure(classFieldName, fieldClass, json);
-    }
-
 }

@@ -1,5 +1,6 @@
 package com.ellen.dhcsqltetest.bean;
 import com.ellen.dhcsqlitelibrary.table.annotation.field.DhcSqlFieldName;
+import com.ellen.dhcsqlitelibrary.table.annotation.field.Ignore;
 import com.ellen.dhcsqlitelibrary.table.annotation.field.Operate;
 import com.ellen.dhcsqlitelibrary.table.annotation.field.OperateEnum;
 import com.ellen.dhcsqlitelibrary.table.annotation.field.SqlType;
@@ -34,6 +35,7 @@ public class Student {
      * 科目以及成绩
      */
     //声明它是属于数据结构的属性
+    @Ignore
     private Map<String,Integer> subjectMap;
 
     /**

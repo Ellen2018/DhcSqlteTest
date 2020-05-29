@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         //清空数据
         studentTable.clear();
-
+        studentTable.deleteTable();
+        studentTable.onCreateTableIfNotExits();
 
         //增加数据
 
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         List<Student> studentList = new ArrayList<>();
         for(int i=0;i<10;i++){
             student = new Student();
-            student.setMan(true);
+            student.setMan(false);
             student.setName("Name_"+i);
             student.setAge(i);
             student.setSubjectMap(getMapSubject());

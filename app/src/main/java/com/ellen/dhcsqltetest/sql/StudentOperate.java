@@ -2,6 +2,7 @@ package com.ellen.dhcsqltetest.sql;
 
 import com.ellen.dhcsqlitelibrary.table.annotation.auto.Delete;
 import com.ellen.dhcsqlitelibrary.table.annotation.auto.Search;
+import com.ellen.dhcsqlitelibrary.table.annotation.auto.TotalSql;
 import com.ellen.dhcsqlitelibrary.table.annotation.auto.Update;
 import com.ellen.dhcsqlitelibrary.table.annotation.auto.Value;
 import com.ellen.dhcsqlitelibrary.table.proxy.AutoDesignOperate;
@@ -38,5 +39,5 @@ public interface StudentOperate extends AutoDesignOperate {
      */
     @Search(whereSql = "name like '%@str%'", orderSql = "id ASC")
     List<Student> searchByLikeName(@Value("str") String str);
-
+    
 }
