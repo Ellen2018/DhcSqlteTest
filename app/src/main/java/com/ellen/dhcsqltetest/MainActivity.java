@@ -63,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
         printAllData("保存单条数据后的所有数据：",studentTable);
 
-        //增加多条数据
+        studentTable.reNameTable("GoodStudent");
+
+       //增加多条数据
         List<Student> studentList = new ArrayList<>();
         for(int i=0;i<10;i++){
             student = new Student();
