@@ -78,7 +78,10 @@ public class MainActivity extends AppCompatActivity {
                 studentList.add(student);
             }
         }
+        //一次性存储，当时不要数据量过大
         studentTable.saveData(studentList);
+        //数据量过大时进行分组存储,每组5个
+        studentTable.saveData(studentList,5);
 
         printAllData("保存多条数据后的所有数据：",studentTable);
 
