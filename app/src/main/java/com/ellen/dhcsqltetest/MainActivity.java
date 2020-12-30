@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         //创建数据库，名字为app_library,版本为1
         AppLibrary appLibrary = new AppLibrary(this,"app_library",1);
 
-        StudentTable studentTable = new StudentTable(appLibrary.getWriteDataBase());
+        StudentTable studentTable = new StudentTable(appLibrary.getWriteDataBase(),Student.class,StudentOperate.class);
 
         //创建表
         studentTable.onCreateTableIfNotExits(new OnCreateTableCallback() {

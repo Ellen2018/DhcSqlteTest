@@ -2,18 +2,28 @@ package com.ellen.dhcsqltetest.sql;
 
 import android.database.sqlite.SQLiteDatabase;
 
+import com.ellen.dhcsqlitelibrary.table.impl.ZxyLibrary;
 import com.ellen.dhcsqlitelibrary.table.impl.ZxyTable;
 import com.ellen.dhcsqltetest.bean.Student;
 
 
 public class StudentTable extends ZxyTable<Student,StudentOperate> {
 
-    public StudentTable(SQLiteDatabase db, String tableName) {
-        super(db, tableName);
+
+    public StudentTable(SQLiteDatabase db, String tableName, Class<Student> dataClass, Class<StudentOperate> autoClass) {
+        super(db, tableName, dataClass, autoClass);
     }
 
-    public StudentTable(SQLiteDatabase db) {
-        super(db);
+    public StudentTable(SQLiteDatabase db, Class<Student> dataClass, Class<StudentOperate> autoClass) {
+        super(db, dataClass, autoClass);
+    }
+
+    public StudentTable(ZxyLibrary zxyLibrary, String tableName, Class<Student> dataClass, Class<StudentOperate> autoClass) {
+        super(zxyLibrary, tableName, dataClass, autoClass);
+    }
+
+    public StudentTable(ZxyLibrary zxyLibrary, Class<Student> dataClass, Class<StudentOperate> autoClass) {
+        super(zxyLibrary, dataClass, autoClass);
     }
 
     @Override
@@ -28,4 +38,5 @@ public class StudentTable extends ZxyTable<Student,StudentOperate> {
             return super.setBooleanValue(classFieldName, value);
         }
     }
+
 }
